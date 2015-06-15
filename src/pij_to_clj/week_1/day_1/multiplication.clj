@@ -1,4 +1,4 @@
-(ns pij-to-clj.multiplication
+(ns pij-to-clj.week-1.day-1.multiplication
   (:gen-class))
 
 ;; Write a program that requests two numbers from

@@ -1,4 +1,4 @@
-(ns pij-to-clj.prime-numbers
+(ns pij-to-clj.week-1.day-1.prime-numbers
   (:gen-class))
 
 ;; Write a program that asks a number from the user,
