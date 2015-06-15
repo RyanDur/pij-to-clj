@@ -14,5 +14,10 @@
 (println "please input another number")
 (def b (read-string (read-line)))
 
-(let [[h & tl] (reverse (take-while pos? (iterate #(- % b) a)))]
-  (println (str a " divided by " b " is " (count tl) ", remainder " h)))
+(def divided (->> (iterate #(- % b) a)
+                  (take-while (some-fn pos? zero?))
+                  (reverse)))
+
+(let [[h & tl] divided]
+  (println (str a " divided by " b " is "
+                (count tl) ", remainder " h)))
