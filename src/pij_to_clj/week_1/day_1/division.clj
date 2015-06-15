@@ -15,7 +15,7 @@
 (def b (read-string (read-line)))
 
 (def divided (->> (iterate #(- % b) a)
-                  (take-while (some-fn pos? zero?))
+                  (take-while #(>= % 0))
                   (reverse)))
 
 (let [[h & tl] divided]
