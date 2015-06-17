@@ -74,13 +74,17 @@
                    (.indexOf ranks h)))
            (recur tl))))
 
+(defn sort-by-rank
+  [hand]
+  (sort-by #(.indexOf ranks %) (keys hand)))
+
 (defn straight-flush?
   "all cards are of the same suite and
   their ranks are consecutive. Note that they are
   probably not ordered as they were entered."
   [hand]
   (and (= 1 (count (set (vals hand))))
-       (consecutive? (sort (keys hand)))))
+       (consecutive? (sort-by-rank hand))))
 
 (defn poker?
   "four of the five cards have the same rank."
@@ -97,7 +101,7 @@
   "all cards share the same suit, but are not consecutive."
   [hand]
   (and (= 1 (count (set (vals hand))))
-       (not (consecutive? (sort (keys hand))))))
+       (not (consecutive? (sort-by-rank hand)))))
 
 (defn straight?
   "all cards are consecutive, but not of the same suit."
