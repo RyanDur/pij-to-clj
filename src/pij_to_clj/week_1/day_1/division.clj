@@ -9,15 +9,24 @@
 ;; 2, remainder 1”. You cannot use the “/”
 ;; or “%” operators.
 
-(println "please input a number")
-(def a (read-string (read-line)))
-(println "please input another number")
-(def b (read-string (read-line)))
+(defn get-input
+  []
+  (println "please input a number")
+  (def a (read-string (read-line)))
+  (println "please input another number")
+  (def b (read-string (read-line)))
+  (list a b))
 
-(def divided (->> (iterate #(- % b) a)
-                  (take-while #(>= % 0))
-                  (reverse)))
+(defn divided
+  [a b]
+  (->> (iterate #(- % b) a)
+       (take-while #(>= % 0))
+       (reverse)))
 
-(let [[h & tl] divided]
+(defn pprint
+  [[h & tl]]
   (println (str a " divided by " b " is "
                 (count tl) ", remainder " h)))
+
+;; (pprint (let [[a b] (get-input)]
+          ;; (divided a b)))

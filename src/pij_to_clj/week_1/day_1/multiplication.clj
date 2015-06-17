@@ -5,9 +5,17 @@
 ;; the user and then outputs its product. You
 ;; cannot use the “*” operator.
 
-(println "please enter a number")
-(def a (read-string (read-line)))
-(println "please enter another number")
-(def b (read-string (read-line)))
+(defn get-input
+  []
+  (println "please enter a number")
+  (def a (read-string (read-line)))
+  (println "please enter another number")
+  (def b (read-string (read-line)))
+  (list a b))
 
-(println (reduce + (repeat b a)))
+(defn multiply
+  [a b]
+  (reduce + (repeat b a)))
+
+;; (println (let [[a b] (get-input)]
+           ;; (multiply a b)))

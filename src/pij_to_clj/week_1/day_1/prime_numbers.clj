@@ -12,6 +12,8 @@
   [x]
   (or (<= x 3) (not-any? #(= (mod x %) 0) (range 2 (+ 1 (Math/sqrt x))))))
 
-(println "Please input a number")
-(let [number (read-string (read-line))]
-  (println  (str number (if (prime? number) " is prime" " is not prime"))))
+(defn ask-for-prime
+  []
+  (println "Please input a number")
+  (let [number (read-string (read-line))]
+    (println  (str number (if (prime? number) " is prime" " is not prime")))))

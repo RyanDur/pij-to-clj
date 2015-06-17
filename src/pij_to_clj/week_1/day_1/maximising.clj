@@ -12,5 +12,8 @@
       (flush)
       (read-string (read-line))))
 
+(defn highest
+  []
+  (apply max (take-while #(not (= % -1)) (repeatedly get-input))))
 
-(apply max (take-while #(not (= % -1)) (repeatedly get-input)))
+;; (highest)

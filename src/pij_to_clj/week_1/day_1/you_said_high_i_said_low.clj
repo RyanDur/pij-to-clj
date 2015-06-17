@@ -32,4 +32,4 @@
     (println "Yes")
     (println "No")))
 
-(print-consecutive? (get-list))
+;; (print-consecutive? (get-list))

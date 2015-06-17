@@ -21,8 +21,14 @@
       (and (= 1 (- (first tl) h))
            (recur tl))))
 
-(def list (take-while #(not (= % -1)) (repeatedly get-input)))
+(defn input-list
+  []
+  (take-while #(not (= % -1)) (repeatedly get-input)))
 
-(if (consecutive-asc? list)
-  (println "Yes")
-  (println "No"))
+(defn print-consecutive
+  [l]
+  (if (consecutive-asc? l)
+    (println "Yes")
+    (println "No")))
+
+;; (print-consecutive (input-list))
