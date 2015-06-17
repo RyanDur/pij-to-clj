@@ -171,3 +171,15 @@
 (deftest consecutive?-test
   (testing "should be consecutive"
     (is (consecutive? (list 9 10 'J 'Q 'K)))))
+
+
+(def royal-flush {'K (list 'spades)
+                  'Q (list 'spades)
+                  9  (list 'spades)
+                  'J (list 'spades)
+                  8  (list 'spades)})
+
+(deftest sort-ranks-test
+  (testing "should sort ranks"
+    (is (= (list 8 9 'J 'Q 'K)
+           (sort-ranks royal-flush)))))
