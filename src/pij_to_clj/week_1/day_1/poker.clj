@@ -55,13 +55,10 @@
          (within? ranks rank)
          (within? suits suit))))
 
-(defn get-card
-  []
-  (do (println "input a card, \"rank\" \"suit\" ")
-      (flush)
-      (let [card (map read-string (split (read-line) #" "))]
-        (if (valid? card) card
-            (do (println "invalid card") (recur))))))
+(defn legal?
+  [hand]
+  (let [dealt (map distinct (vals hand))]
+    (= 5 (count (flatten dealt)))))
 
 (defn matchingRanks
   [num hand]
@@ -139,3 +136,20 @@
     (two-pair? hand) "Two pair"
     (pair? hand) "Pair"
     :else "You got nothin!!"))
+
+(defn deal-card
+  []
+  (do (println "input a card, \"rank\" \"suit\" ")
+      (flush)
+      (let [card (map read-string (split (read-line) #" "))]
+        (if (valid? card) card
+            (do (println "invalid card") (recur))))))
+
+(defn collect-hand
+  [deal]
+  (let [hand (->> (doall (take 5 (repeatedly deal)))
+                  (cons {})
+                  (reduce to-hand))]
+    (if (legal? hand) hand (recur deal))))
+
+;; (best-hand (collect-hand deal-card))

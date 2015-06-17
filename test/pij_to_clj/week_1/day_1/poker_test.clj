@@ -183,3 +183,17 @@
   (testing "should sort ranks"
     (is (= (list 8 9 'J 'Q 'K)
            (sort-ranks royal-flush)))))
+
+(deftest legal?-test
+  (testing "should allow valid hands"
+    (is (legal? {5  (list 'diamonds)
+                 1  (list 'spades)
+                 3  (list 'hearts)
+                 8  (list 'clubs)
+                 'K (list 'diamonds)})))
+
+  (testing "should not allow invald hand"
+    (is (not (legal? {5  (list 'diamonds 'diamonds)
+                      1  (list 'spades)
+                      3  (list 'hearts)
+                      'K (list 'diamonds)})))))
