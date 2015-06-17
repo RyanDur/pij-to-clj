@@ -36,7 +36,6 @@
 ;; If you ever launch an online poker business, this
 ;; could be one (very small) piece of it.
 (def ranks [1 2 3 4 5 6 7 8 9 10 'J 'Q 'K])
-(def royal {'J 11 'Q 12 'K 13})
 (def suits ['spades 'hearts 'diamonds 'clubs])
 
 (defn within?
@@ -71,7 +70,8 @@
 (defn consecutive?
   [[h & tl]]
   (or (not tl)
-      (and (let [a (first tl)] (= 1 (- (royal a a) (royal h h))))
+      (and (= 1 (- (.indexOf ranks (first tl))
+                   (.indexOf ranks h)))
            (recur tl))))
 
 (defn straight-flush?
